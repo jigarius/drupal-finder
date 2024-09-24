@@ -10,7 +10,7 @@ namespace DrupalFinder;
 use Composer\InstalledVersions;
 use Composer\Autoload\ClassLoader;
 
-class DrupalFinderComposerRuntime
+class DrupalFinderComposerRuntime implements DrupalFinderInterface
 {
     /**
      * Get the Drupal root path.
