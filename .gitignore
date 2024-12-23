@@ -4,4 +4,6 @@
 /tests/fixtures/custom-vendor/foo
 /tests/fixtures/default/web
 /tests/fixtures/default/vendor
-/tests/fixtures/*/composer.lock
+/tests/fixtures/**/composer.lock
+/tests/fixtures/symlink-package/drupal/*
+/tests/fixtures/symlink-package/package/vendor

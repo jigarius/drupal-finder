@@ -60,4 +60,30 @@ class DrupalFinderComposerRuntimeTest extends TestCase {
     $this->assertSame($result['getDrupalRoot'], $basePath . '/foo/bar/drupal');
   }
 
+  /**
+   * @runInSeparateProcess
+   */
+  public function testSymlinkPackage() {
+    $drupalPath = realpath(__DIR__ . '/fixtures/symlink-package/drupal');
+    $this->assertDirectoryExists("$drupalPath/vendor", static::installFixtures);
+    $this->assertDirectoryExists("$drupalPath/web", static::installFixtures);
+
+    $packagePath = realpath(__DIR__ . '/fixtures/symlink-package/package');
+    $this->assertDirectoryExists("$packagePath/vendor", static::installFixtures);
+
+    $process = new Process(['composer', 'exec', 'symlink-package'], $drupalPath);
+    $process->run();
+
+    // executes after the command finishes
+    if (!$process->isSuccessful()) {
+      throw new ProcessFailedException($process);
+    }
+
+    $result = json_decode($process->getOutput(), TRUE);
+    var_dump($result);
+//    $this->assertSame($result['getComposerRoot'], $drupalPath);
+//    $this->assertSame($result['getVendorDir'], $drupalPath . '/vendor');
+//    $this->assertSame($result['getDrupalRoot'], $drupalPath . '/web');
+  }
+
 }

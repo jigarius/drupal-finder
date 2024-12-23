@@ -36,13 +36,18 @@
     "scripts": {
         "install-fixtures": [
             "cd tests/fixtures/custom-vendor && composer install",
-            "cd tests/fixtures/default && composer install"
+            "cd tests/fixtures/default && composer install",
+            "cd tests/fixtures/symlink-package/drupal && composer install",
+            "cd tests/fixtures/symlink-package/package && composer install"
         ],
         "uninstall-fixtures": [
-            "rm -rf tests/fixtures/*/composer.lock",
+            "rm -rf tests/fixtures/**/composer.lock",
             "rm -rf tests/fixtures/custom-vendor/foo",
             "rm -rf tests/fixtures/default/web",
-            "rm -rf tests/fixtures/default/vendor"
+            "rm -rf tests/fixtures/default/vendor",
+            "rm -rf tests/fixtures/symlink-package/drupal/web",
+            "rm -rf tests/fixtures/symlink-package/drupal/vendor",
+            "rm -rf tests/fixtures/symlink-package/package/vendor"
         ],
         "reinstall-fixtures": [
             "@uninstall-fixtures",

@@ -1,0 +1,17 @@
+{
+    "name": "webflo/foo",
+    "description": "The package that depends on Drupal Finder.",
+    "repositories": {
+        "drupal-finder": {
+            "type": "path",
+            "url": "../../../"
+        }
+    },
+    "require": {
+        "webflo/drupal-finder": "*"
+    },
+    "bin": [
+      "symlink-package"
+    ],
+    "minimum-stability": "dev"
+}

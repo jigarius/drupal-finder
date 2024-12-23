@@ -1,0 +1,44 @@
+{
+    "description": "A Drupal project that refers to the local package 'webflo/foo'.",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        "drupal-finder": {
+            "type": "path",
+            "url": "../../../"
+        },
+        "symlink-package": {
+            "type": "path",
+            "url": "../package",
+            "options": {
+                "symlink": true
+            }
+        }
+    },
+    "require": {
+        "composer/installers": "^2.0",
+        "drupal/core": "^10",
+        "webflo/foo": "*"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "extra": {
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ]
+        }
+    }
+}
